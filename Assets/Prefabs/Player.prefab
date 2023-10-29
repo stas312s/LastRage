@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 665504297439709050}
   - component: {fileID: 665504297439709049}
   - component: {fileID: 665504297439709045}
+  - component: {fileID: 1830720698}
+  - component: {fileID: 1830720703}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -125,12 +127,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -146,5 +148,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce2b04f856da5048954a58813243d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _jumpForce: 10
+  _speed: 1000
+  _jumpForce: 85
+--- !u!114 &1830720698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665504297439709048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cc6c48fd01f8c44bec40931d8f41f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1830720703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665504297439709048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f6709c616f7ad409a22f026980afb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _bulletPrefab: {fileID: 6710538769771203429, guid: 3d4c070657a5e1745bc29b3112b36e61, type: 3}
+  _shootPoint: {fileID: 665504297439709044}
+  _bulletSpeed: 30
+  _offset: {x: 0.5, y: 0, z: 0}

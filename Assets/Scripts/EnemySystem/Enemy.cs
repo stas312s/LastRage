@@ -1,19 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using HealthSystem;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
-public class Enemy : MonoBehaviour
+public class Enemy : DamageTaker<CommonBullet>
 {
     [SerializeField] private Transform _target;
     [SerializeField] private float speed = 10f;
+    
     private Rigidbody2D _rb;
-    void Start()
+    protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    
+    private void FixedUpdate()
     {
         MonstrMove();
     }
@@ -22,15 +24,13 @@ public class Enemy : MonoBehaviour
     {
         if (_target != null)
         {
-            
             Vector2 direction = _target.position - transform.position;
             direction.Normalize();
             direction.y = 0;
             Vector2 Move = new Vector2(direction.x * speed * Time.deltaTime, direction.y); 
             _rb.velocity = (Move);
-
-            
-            //transform.Translate(direction * speed * Time.deltaTime);
         }
     }
+
+   
 }

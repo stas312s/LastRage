@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2441076925880409804}
   - component: {fileID: 2441076925880409803}
   - component: {fileID: 2441076925880409802}
-  - component: {fileID: 2095234229}
+  - component: {fileID: 1747250053460956152}
   m_Layer: 6
   m_Name: RunEnemy
   m_TagString: Untagged
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2095234229
+--- !u!114 &1747250053460956152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +143,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2441076925880409801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a5a15bc06bd824cbcd2f23165285ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bd00cb60dc49819891bbc65e5570c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  speed: 500
+  speed: 10
+  _bulletprefab: {fileID: 8429515529978219347, guid: 3d4c070657a5e1745bc29b3112b36e61, type: 3}
+  _healthPoint: 2
+  _damage: 1
+  _bulletSpeed: 20
+  _playerTransform: {fileID: 0}
