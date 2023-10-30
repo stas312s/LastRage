@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using HealthSystem;
+using Player.Interfaces;
 using UnityEngine;
+using Zenject;
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : DamageTaker<CommonBullet>
 {
-    [SerializeField] private Transform _target;
+    [Inject] private IPlayerPosition _playerPosition;
     [SerializeField] private float speed = 10f;
     
     private Rigidbody2D _rb;
@@ -22,9 +25,9 @@ public class Enemy : DamageTaker<CommonBullet>
 
     private void MonstrMove()
     {
-        if (_target != null)
+        if (_playerPosition.Transform != null)
         {
-            Vector2 direction = _target.position - transform.position;
+            Vector2 direction = _playerPosition.Position - (Vector2)transform.position;
             direction.Normalize();
             direction.y = 0;
             Vector2 Move = new Vector2(direction.x * speed * Time.deltaTime, direction.y); 

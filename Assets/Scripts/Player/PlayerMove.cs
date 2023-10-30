@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Player.Interfaces;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.GameCenter;
 
 [RequireComponent(typeof(Rigidbody2D),typeof(Collider2D))]
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour, IPlayerPosition
 {
+    public Transform Transform => transform;
+    public Vector2 Position => transform.position;
+    
     private Rigidbody2D _rb;
     private Collider2D _collider2D;
     private Vector2 _movement;
@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _jumpForce = 10f;
+    
 
     private void Start()
     {
@@ -110,9 +111,7 @@ public class PlayerMove : MonoBehaviour
             _collider2D.bounds.extents.x, LayerMask.GetMask("Ground"));
         return hit;
     }
-    
-    
-   
 
-    
+
+
 }

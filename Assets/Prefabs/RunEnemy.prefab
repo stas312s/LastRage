@@ -146,10 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05bd00cb60dc49819891bbc65e5570c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  speed: 10
-  _bulletprefab: {fileID: 8429515529978219347, guid: 3d4c070657a5e1745bc29b3112b36e61, type: 3}
   _healthPoint: 2
+  _target: {fileID: 0}
+  speed: 500
   _damage: 1
   _bulletSpeed: 20
   _playerTransform: {fileID: 0}
+  _bulletPrefab: {fileID: -618293595819446169, guid: 822c3cef8ed757c47ad92227808d1432, type: 3}

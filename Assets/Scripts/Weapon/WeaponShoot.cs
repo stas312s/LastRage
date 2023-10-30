@@ -13,17 +13,27 @@ public class WeaponShoot : MonoBehaviour
     [SerializeField] private float _bulletSpeed = 10f;
     [SerializeField] private Vector3 _offset;
     private int _fireButton = 0;
-    
-    
+    private float _shootDelay = 0.25f;
+    private float _tempTime;
 
-    
+    private void Start()
+    {
+        _tempTime = Time.time;
+    }
+
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(_fireButton))
+        if (Time.time - _tempTime >= _shootDelay)
         {
-            Shoot();
+            if (Input.GetMouseButtonDown(_fireButton))
+            {
+                Shoot();
+                _tempTime = Time.time;
+            }
+
         }
+        
     }
 
     protected virtual void Shoot()

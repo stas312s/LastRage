@@ -23,8 +23,13 @@ namespace HealthSystem
             _healthPoint -= damage;
             if (_healthPoint <= 0)
             {
-                Destroy(gameObject);
+                Destroy();
             }
+        }
+
+        protected virtual void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

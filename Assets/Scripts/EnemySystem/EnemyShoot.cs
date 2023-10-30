@@ -1,15 +1,18 @@
 ﻿
 using System;
 using System.Collections;
+using Player.Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace EnemySystem
 {
     public class EnemyShoot: Enemy
     {
+        [Inject] private IPlayerPosition _playerPosition;
+        
         [SerializeField] private int _damage;
         [SerializeField] private int _bulletSpeed;
-        [SerializeField] private Transform _playerTransform;
         [SerializeField] private EnemyCommonBullet _bulletPrefab;
 
         protected override void Start()
@@ -26,17 +29,24 @@ namespace EnemySystem
             
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             
-            Vector2 direction = (_playerTransform.position - transform.position).normalized;
+            Vector2 direction = (_playerPosition.Position - (Vector2)transform.position).normalized;
             rb.velocity = direction * _bulletSpeed;
 
         }
 
         private IEnumerator ShootDelay()
         {
-            while (_playerTransform != null)
+            while (_playerPosition.Transform != null)
             {
-                Shoot();
-                yield return new WaitForSeconds(1f);
+                if (Vector2.Distance(_playerPosition.Position, (Vector2) transform.position) <= 12f)
+                {
+                    Shoot();
+                    yield return new WaitForSeconds(1f);
+                }
+                else
+                {
+                    yield return null;
+                }
             }
         }
     }
