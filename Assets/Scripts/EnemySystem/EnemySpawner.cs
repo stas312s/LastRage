@@ -6,12 +6,13 @@ using Extension;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Enemy[] _enemyPrefabs;
     
     [Inject] private IPlayerPosition _playerTransform;
     [Inject] private DiContainer _container;
     
-    private float _spawnDistance = 20f;
+    private float _spawnMinDistance = 20f;
+    private float _spawnMaxDistance = 30f;
     private float _spawnInterval = 3f;
     private float _lastSpawnTime;
 
@@ -24,20 +25,28 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time - _lastSpawnTime >= _spawnInterval)
         {
-            EnemySpawn();
+            SpawnEnemy(Direction.Right);
+            SpawnEnemy(Direction.Left);
             _lastSpawnTime = Time.time;
         }
     }
 
-
-    private void EnemySpawn()
+    private void SpawnEnemy(Direction direction)
     {
-        float direction = Random.Range(0, 2) == 0 ? -1 : 1;
+        float spawnDistance = Random.Range(_spawnMinDistance, _spawnMaxDistance);
+        Vector2 playerPosition =  new Vector2(_playerTransform.Position.x, 5); 
         
-        Vector2 playerPosition =  new Vector2(_playerTransform.Position.x, -3); 
-        Vector2 spawnPosition = playerPosition + new Vector2(_spawnDistance * direction, 0);
+        Vector2 spawnPosition = playerPosition + new Vector2(spawnDistance * (direction == Direction.Right? 1:-1), 0);
+        
+        _container.Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)], spawnPosition);
+    }
 
-        _container.Instantiate(_enemyPrefab, spawnPosition);
+   
+
+    public enum Direction
+    {
+        Right,
+        Left
     }
 
 }

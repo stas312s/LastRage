@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2441076925880409804}
   - component: {fileID: 2441076925880409803}
   - component: {fileID: 2441076925880409802}
-  - component: {fileID: 46133976745768163}
+  - component: {fileID: 1747250053460956152}
   m_Layer: 6
-  m_Name: RunEnemy
+  m_Name: ShootEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff448b33a1a79304baf2618119ada285, type: 2}
+  - {fileID: 2100000, guid: e1db3a05c67fdd14cbea9fe57aab836a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &46133976745768163
+--- !u!114 &1747250053460956152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,10 +143,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2441076925880409801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8893b67479af40df866b812147ec796a, type: 3}
+  m_Script: {fileID: 11500000, guid: 05bd00cb60dc49819891bbc65e5570c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPoint: 5
   Damage: 1
   _speed: 600
-  _stopDistance: 0
+  _stopDistance: 5
+  _shootDamage: 1
+  _bulletSpeed: 20
+  _bulletPrefab: {fileID: -618293595819446169, guid: 822c3cef8ed757c47ad92227808d1432, type: 3}

@@ -2507,7 +2507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9546c2c465a9d14f94d94f90473ed40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 1747250053460956152, guid: a62f9bcd6b1d8e34290f5eda93d4bf61, type: 3}
+  _enemyPrefabs:
+  - {fileID: 46133976745768163, guid: a62f9bcd6b1d8e34290f5eda93d4bf61, type: 3}
+  - {fileID: 1747250053460956152, guid: 9c6762aa97875b04aa6f2350043ea6bb, type: 3}
 --- !u!4 &728388951
 Transform:
   m_ObjectHideFlags: 0
@@ -2722,7 +2724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f2344968a84473a6d438e4af93e66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoint: 2
+  _healthPoint: 100
 --- !u!1 &1861866426
 GameObject:
   m_ObjectHideFlags: 0
@@ -32983,6 +32985,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1830720703, guid: fe4ce5a0f4592e74ca2d2cd7a4d942cf, type: 3}
+      propertyPath: _bulletSpeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 665504297439709044, guid: fe4ce5a0f4592e74ca2d2cd7a4d942cf, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -33029,7 +33035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 665504297439709045, guid: fe4ce5a0f4592e74ca2d2cd7a4d942cf, type: 3}
       propertyPath: _speed
-      value: 750
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 665504297439709048, guid: fe4ce5a0f4592e74ca2d2cd7a4d942cf, type: 3}
       propertyPath: m_Name

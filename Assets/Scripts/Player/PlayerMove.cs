@@ -102,13 +102,12 @@ public class PlayerMove : MonoBehaviour, IPlayerPosition
     }
     private RaycastHit2D PlayerRayWall(Vector3 origin)
     {
-        
         var direction = _isFlip ? Vector2.left : Vector2.right;
         var startPoint = new Vector2(_isFlip ? origin.x - 1 : origin.x, origin.y);
         
         Debug.DrawRay(startPoint, direction, Color.green, 2, false);
         RaycastHit2D hit = Physics2D.Raycast(startPoint, direction,
-            _collider2D.bounds.extents.x, LayerMask.GetMask("Ground"));
+            _collider2D.bounds.extents.x, _jumpLayer);
         return hit;
     }
 

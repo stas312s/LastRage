@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using Player.Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace EnemySystem
@@ -11,7 +12,7 @@ namespace EnemySystem
     {
         [Inject] private IPlayerPosition _playerPosition;
         
-        [SerializeField] private int _damage;
+        [FormerlySerializedAs("_damage")] [SerializeField] private int _shootDamage;
         [SerializeField] private int _bulletSpeed;
         [SerializeField] private EnemyCommonBullet _bulletPrefab;
 
@@ -25,7 +26,7 @@ namespace EnemySystem
         private void Shoot()
         {
             EnemyCommonBullet bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
-            bullet.Damage = _damage;
+            bullet.Damage = _shootDamage;
             
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             
