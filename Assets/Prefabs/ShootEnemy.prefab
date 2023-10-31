@@ -149,7 +149,7 @@ MonoBehaviour:
   _healthPoint: 5
   Damage: 1
   _speed: 600
-  _stopDistance: 5
+  _stopDistance: 8
   _shootDamage: 1
   _bulletSpeed: 20
   _bulletPrefab: {fileID: -618293595819446169, guid: 822c3cef8ed757c47ad92227808d1432, type: 3}

@@ -25,6 +25,7 @@ namespace EnemySystem
 
         private void Shoot()
         {
+            
             EnemyCommonBullet bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
             bullet.Damage = _shootDamage;
             
@@ -39,7 +40,7 @@ namespace EnemySystem
         {
             while (_playerPosition.Transform != null)
             {
-                if (Vector2.Distance(_playerPosition.Position, (Vector2) transform.position) <= 12f)
+                if (Vector2.Distance(_playerPosition.Position, (Vector2) transform.position) <= 12f && _rb.velocity == Vector2.zero) 
                 {
                     Shoot();
                     yield return new WaitForSeconds(1f);
