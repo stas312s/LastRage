@@ -30,6 +30,7 @@ public class Enemy : DamageTaker<CommonBullet>
     {
         _rb = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        
     }
     
     private void FixedUpdate()

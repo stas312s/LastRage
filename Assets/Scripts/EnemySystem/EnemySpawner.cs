@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
     
     private float _spawnMinDistance = 20f;
     private float _spawnMaxDistance = 30f;
-    private float _spawnInterval = 10f;
+    private float _spawnInterval = 3f;
     private float _lastSpawnTime;
 
     private void Start()
