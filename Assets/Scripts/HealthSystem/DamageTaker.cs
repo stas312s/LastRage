@@ -14,7 +14,10 @@ namespace HealthSystem
             if (other.TryGetComponent<TBullet>(out var bullet))
             {
                 TakeDamage(bullet.Damage);
-                Destroy(bullet.gameObject);
+                if (bullet.NeedDestroy)
+                {
+                    Destroy(bullet.gameObject);
+                }
             }
         }
         
