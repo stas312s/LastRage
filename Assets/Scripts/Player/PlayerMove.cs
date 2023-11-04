@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour, IPlayerPosition
     private bool _isFlip = false;
     private int _jumpLayer => LayerMask.GetMask("Ground", "Enemy");
     private float _extraHeight = 0.2f;
+    private Animator _animator;
 
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _jumpForce = 10f;
@@ -25,6 +26,7 @@ public class PlayerMove : MonoBehaviour, IPlayerPosition
     {
         _rb = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<Collider2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -39,7 +41,10 @@ public class PlayerMove : MonoBehaviour, IPlayerPosition
 
     private void Move()
     {
+        _animator.SetFloat("Jump", _rb.velocity.y);
+        _animator.SetBool("IsGrounded", IsGrounded());
         var axis = Input.GetAxis("Horizontal");
+        _animator.SetFloat("Run", Mathf.Abs(axis));
         if (_canMove && (!IsWall() || IsGrounded() || (axis < 0 && !_isFlip) || (axis > 0 && _isFlip)  ))
         {
             if((axis < 0 && !_isFlip) || axis > 0 && _isFlip)
@@ -91,11 +96,13 @@ public class PlayerMove : MonoBehaviour, IPlayerPosition
         
         RaycastHit2D hit = PlayerRayGround(centerRight);
         RaycastHit2D hit2 = PlayerRayGround(centerLeft);
-        return hit.collider != null || hit2.collider != null;
+        RaycastHit2D hit3 = PlayerRayGround(center);
+        return hit.collider != null || hit2.collider != null || hit3.collider != null;
     }
 
     private RaycastHit2D PlayerRayGround(Vector3 origin)
     {
+        Debug.DrawRay(origin, Vector2.down, Color.green, 2, false);
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down,
             _collider2D.bounds.extents.y + _extraHeight, _jumpLayer);
         return hit;

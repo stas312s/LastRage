@@ -6,14 +6,14 @@ using Extension;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy[] _enemyPrefabs;
-    
     [Inject] private IPlayerPosition _playerTransform;
     [Inject] private DiContainer _container;
     
+    [SerializeField] private Enemy[] _enemyPrefabs;
+    [SerializeField] private float _spawnInterval = 30f;
+
     private float _spawnMinDistance = 20f;
     private float _spawnMaxDistance = 30f;
-    private float _spawnInterval = 3f;
     private float _lastSpawnTime;
 
     private void Start()

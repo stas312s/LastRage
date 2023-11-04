@@ -5,7 +5,7 @@ using UnityEditor.Build.Content;
 using UnityEngine;
 using Weapon;
 
-public class CommonWeaponShoot : WeaponShoot
+public class CommonWeaponShoot : WeaponShoot<CommonBullet>
 {
     protected override float BulletSpeed => _bulletSpeed;
 
@@ -14,8 +14,7 @@ public class CommonWeaponShoot : WeaponShoot
 
     protected override void Shoot()
     {
-        CommonBullet bullet = Instantiate(_bulletPrefab, transform.position + Offset, Quaternion.identity);
-        bullet.Damage = Damage;
+        var bullet = SpawnBullet(_bulletPrefab);
     
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - transform.position).normalized;

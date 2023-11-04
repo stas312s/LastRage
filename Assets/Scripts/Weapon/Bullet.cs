@@ -10,7 +10,7 @@ namespace Weapon
     {
         protected Rigidbody2D _rb;
         public bool NeedDestroy = true;
-        [HideInInspector]public int Damage;
+        [HideInInspector]public float Damage;
 
         private void Start()
         {
@@ -23,7 +23,7 @@ namespace Weapon
         {
             if(other.TryGetComponent<Ground>(out var ground))
             {
-                Destroy(gameObject);
+                Destroy();
                 
             }
         }
@@ -32,6 +32,11 @@ namespace Weapon
         private IEnumerator DestroyBullet()
         {
             yield return new WaitForSeconds(2f);
+            Destroy();
+        }
+
+        protected virtual void Destroy()
+        {
             Destroy(gameObject);
         }
     }

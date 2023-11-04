@@ -5,9 +5,9 @@ namespace HealthSystem
 {
     public abstract class DamageTaker<TBullet> : MonoBehaviour, IHealth where TBullet: Bullet
     {
-        public int HealthPoint => _healthPoint;
+        public float HealthPoint => _healthPoint;
         
-        [SerializeField] private int _healthPoint = 1;
+        [SerializeField] private float _healthPoint = 1;
         
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
@@ -21,7 +21,7 @@ namespace HealthSystem
             }
         }
         
-        public virtual void TakeDamage( int damage)
+        public virtual void TakeDamage( float damage)
         {
             _healthPoint -= damage;
             if (_healthPoint <= 0)

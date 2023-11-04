@@ -7,7 +7,9 @@ namespace Extension
     {
         public static TObject Instantiate<TObject>(this DiContainer container, TObject prefab, Vector2 position) where TObject: Object
         {
-            return container.InstantiatePrefab(prefab, position, Quaternion.identity, null) as TObject;
+            var spawnedObject = container.InstantiatePrefab(prefab, position, Quaternion.identity, null);
+            var spawnedCastedObject = spawnedObject.GetComponent<TObject>();
+            return spawnedCastedObject;
         }
         
     }

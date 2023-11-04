@@ -2,9 +2,9 @@
 
 namespace Weapon
 {
-    public class RocketWeaponShoot: WeaponShoot
+    public class RocketWeaponShoot: WeaponShoot<Rocket>
     {
-        protected override int Damage => _damage;
+        protected override float Damage => _damage;
         protected override float ShootDelay => 0.4f;
         protected override float BulletSpeed => _bulletSpeed;
 
@@ -14,9 +14,9 @@ namespace Weapon
 
         protected override void Shoot()
         {
-       
-            Rocket rocket = Instantiate(_rocketPrefab, transform.position + Offset, Quaternion.identity);
-            rocket.Damage = Damage;
+
+            var rocket = SpawnBullet(_rocketPrefab);
+            
     
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (mousePosition - transform.position).normalized;
