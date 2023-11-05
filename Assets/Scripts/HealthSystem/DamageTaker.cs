@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ModestTree;
+using UnityEngine;
 using Weapon;
 
 namespace HealthSystem
@@ -16,6 +17,7 @@ namespace HealthSystem
                 TakeDamage(bullet.Damage);
                 if (bullet.NeedDestroy)
                 {
+                    Debug.Log("need destroy");
                     Destroy(bullet.gameObject);
                 }
             }

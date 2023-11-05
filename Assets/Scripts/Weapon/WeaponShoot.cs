@@ -4,7 +4,7 @@ using Extension;
 
 namespace Weapon
 {
-    public abstract class WeaponShoot<TBullet> : MonoBehaviour where TBullet: CommonBullet 
+    public abstract class WeaponShoot<TBullet> : MonoBehaviour where TBullet: Bullet
     {
         [Inject] private DiContainer _container;
         protected virtual float Damage => 1;

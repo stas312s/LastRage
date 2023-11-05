@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using ModestTree;
 using UnityEngine;
 
 
@@ -38,6 +39,7 @@ namespace Weapon
         protected virtual void Destroy()
         {
             Destroy(gameObject);
+            Debug.Log("GAVGAV");
         }
     }
 }

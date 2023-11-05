@@ -22,4 +22,5 @@ public class CommonWeaponShoot : WeaponShoot<CommonBullet>
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = direction * BulletSpeed;
     }
+    
 }

@@ -33028,7 +33028,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146322449}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11c84174bbd34c2ba947b06fccf09c9b, type: 3}
   m_Name: 
@@ -33060,3 +33060,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &665504295612666843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146322449}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d30c6bc38a19cc40b000dc3427f9970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 0.5, y: 0, z: 0}
+  _damage: 1
+  _shootDelay: 0.15
+  _bulletSpeed: 50
+  _targetRifflePrefab: {fileID: 5105805642167588448, guid: 4a6182b51ea86c1438969cceb47b8d4e, type: 3}
