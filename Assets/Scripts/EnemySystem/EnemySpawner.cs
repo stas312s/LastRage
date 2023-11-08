@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [Inject] private DiContainer _container;
     
     [SerializeField] private Enemy[] _enemyPrefabs;
-    [SerializeField] private float _spawnInterval = 30f;
+    [SerializeField] private float _spawnInterval = 3f;
 
     private float _spawnMinDistance = 20f;
     private float _spawnMaxDistance = 30f;

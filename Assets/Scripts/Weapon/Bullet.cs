@@ -39,7 +39,6 @@ namespace Weapon
         protected virtual void Destroy()
         {
             Destroy(gameObject);
-            Debug.Log("GAVGAV");
         }
     }
 }
