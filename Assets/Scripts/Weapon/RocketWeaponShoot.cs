@@ -4,8 +4,8 @@ namespace Weapon
 {
     public class RocketWeaponShoot: WeaponShoot<Rocket>
     {
-        protected override float Damage => _damage;
-        protected override float ShootDelay => 0.4f;
+        public override float Damage => _damage;
+        public override float ShootDelay => 0.4f;
         protected override float BulletSpeed => _bulletSpeed;
 
         [SerializeField] private int _damage;

@@ -4,8 +4,8 @@ namespace Weapon
 {
     public class MultiplyWeaponShoot: WeaponShoot<Multiply>
     {
-        protected override float Damage => _damage;
-        protected override float ShootDelay => _shootDelay;
+        public override float Damage => _damage;
+        public override float ShootDelay => _shootDelay;
         protected override float BulletSpeed => _bulletSpeed;
 
         [SerializeField]private float _damage;
@@ -19,23 +19,7 @@ namespace Weapon
         
         protected override void Shoot()
         {
-             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //
-            // 
-            // var multiply = SpawnBullet(_multiplyPrefab); 
-            // Rigidbody2D centralRB = multiply.GetComponent<Rigidbody2D>();
-            // Vector3 centralDirection = (mousePosition - transform.position).normalized;
-            // centralRB.velocity = centralDirection * _bulletSpeed; // bulletSpeed - скорость пули
-            //
-            // for (int i = -2; i < 3; i++)
-            // {
-            //     float radians = Mathf.Deg2Rad * (_angleIncrement * (i + 1));
-            //     Vector3 direction = new Vector3(Mathf.Cos(radians), Mathf.Sin(radians), 0);
-            //
-            //     var multiplyOther = SpawnBullet(_multiplyPrefab); 
-            //     Rigidbody2D rb = multiplyOther.GetComponent<Rigidbody2D>();
-            //     rb.velocity = ((centralDirection + direction) * _bulletSpeed); // bulletSpeed - скорость пули
-            // }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             var playerFacingDirection = (mousePosition - transform.position).normalized;
 

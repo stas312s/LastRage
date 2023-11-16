@@ -17,7 +17,6 @@ namespace HealthSystem
                 TakeDamage(bullet.Damage);
                 if (bullet.NeedDestroy)
                 {
-                    Debug.Log("need destroy");
                     Destroy(bullet.gameObject);
                 }
             }

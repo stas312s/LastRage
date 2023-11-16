@@ -4,15 +4,19 @@ using Extension;
 
 namespace Weapon
 {
-    public abstract class WeaponShoot<TBullet> : MonoBehaviour where TBullet: Bullet
+    public abstract class WeaponShoot<TBullet> : BaseWeapon where TBullet: Bullet
     {
         [Inject] private DiContainer _container;
-        protected virtual float Damage => 1;
-        protected  virtual float BulletSpeed => 10f;
-        protected virtual float ShootDelay => 0.1f;
-        [SerializeField] protected  Vector3 Offset = new Vector3(0.5f, 0 ,0);
-        protected  int FireButton = 0;
-        private  float _tempTime;
+        public virtual float Damage => 1;
+        public bool IsActive { get; set; } = false;
+        public virtual float ShootDelay => 0.1f;
+        
+        [SerializeField] protected Vector3 Offset = new Vector3(0.5f, 0 ,0);
+        
+        protected int FireButton = 0;
+        protected virtual float BulletSpeed => 10f;
+        
+        private float _tempTime;
         
         private void Start()
         {

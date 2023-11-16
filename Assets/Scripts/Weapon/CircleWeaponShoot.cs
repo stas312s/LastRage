@@ -6,7 +6,7 @@ namespace Weapon
 {
     public class CircleWeaponShoot: WeaponShoot<Circle>
     {
-        protected override float Damage => _damage;
+        public override float Damage => _damage;
 
         [SerializeField] private float _damage;
         [SerializeField] private Circle _circlePrefab;
