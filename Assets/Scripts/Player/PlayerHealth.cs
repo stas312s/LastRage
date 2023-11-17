@@ -17,7 +17,6 @@ namespace Player
         {
             if (other.collider.TryGetComponent<Enemy>(out var enemy))
             {
-                Debug.Log("Столкновение");
                 TakeDamage(enemy.Damage);
             }
         }

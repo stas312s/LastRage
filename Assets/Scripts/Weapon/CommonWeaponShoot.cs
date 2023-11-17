@@ -7,6 +7,7 @@ using Weapon;
 
 public class CommonWeaponShoot : WeaponShoot<CommonBullet>
 {
+    public override WeaponType Type => WeaponType.Common;
     protected override float BulletSpeed => _bulletSpeed;
 
     [SerializeField] private float _bulletSpeed;
@@ -22,5 +23,6 @@ public class CommonWeaponShoot : WeaponShoot<CommonBullet>
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.velocity = direction * BulletSpeed;
     }
+
     
 }

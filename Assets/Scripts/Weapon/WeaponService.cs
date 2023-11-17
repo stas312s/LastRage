@@ -9,24 +9,50 @@ namespace Weapon
 
 
         public List<BaseWeapon> GetWeapons => _weapons;
-        public List<BaseWeapon> AvailableWeapons { get; }
-        public BaseWeapon EnabledWeapon => _weapons.FirstOrDefault(weapon => weapon.IsActive);
+        public List<BaseWeapon> AvailableWeapons => _weapons.Where(weapon => weapon.IsAvailable).ToList();
+        public BaseWeapon ActiveWeapon => _weapons.FirstOrDefault(weapon => weapon.IsActive);
+        public int AmountWeapons => _weapons.Count;
 
         private List<BaseWeapon> _weapons;
 
         public WeaponService(List<BaseWeapon> weapons)
         {
             _weapons = weapons;
-            foreach (var weapon in _weapons)
-            {
-                Debug.Log(weapon.name);
-            }
+         
+            TakeWeapon(WeaponType.Common);
+            TakeWeapon(WeaponType.Circle);
+            TakeWeapon(WeaponType.Multiply);
+            TakeWeapon(WeaponType.Riffle);
+            ActivateWeapon(WeaponType.Common);
+            
         }
         
         
-        public void ActivateWeapon(BaseWeapon baseWeapon)
+
+        public void TakeWeapon(WeaponType type)
         {
-            
+            GetWeapon(type).TakeWeapon();
+        }
+
+        public BaseWeapon GetWeapon(WeaponType type)
+        {
+            return _weapons.First(weapon => weapon.Type == type);
+        }
+
+
+        public void ActivateWeapon(WeaponType type)
+        {
+            foreach (var weapon in AvailableWeapons)
+            {
+                if (weapon.Type == type)
+                {
+                    weapon.ActivateWeapon();
+                }
+                else
+                {
+                    weapon.DisactivateWeapon();
+                }
+            }
         }
         
         

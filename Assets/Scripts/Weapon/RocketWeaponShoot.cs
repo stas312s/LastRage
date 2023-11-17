@@ -4,6 +4,7 @@ namespace Weapon
 {
     public class RocketWeaponShoot: WeaponShoot<Rocket>
     {
+        public override WeaponType Type => WeaponType.Rocket;
         public override float Damage => _damage;
         public override float ShootDelay => 0.4f;
         protected override float BulletSpeed => _bulletSpeed;

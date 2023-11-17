@@ -8,6 +8,7 @@ namespace Weapon
     {
         [Inject] private DiContainer _container;
         public virtual float Damage => 1;
+        public override Sprite Icon => _icon;
         public bool IsActive { get; set; } = false;
         public virtual float ShootDelay => 0.1f;
         
@@ -15,6 +16,8 @@ namespace Weapon
         
         protected int FireButton = 0;
         protected virtual float BulletSpeed => 10f;
+
+        [SerializeField] private Sprite _icon;
         
         private float _tempTime;
         

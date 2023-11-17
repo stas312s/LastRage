@@ -4,6 +4,7 @@ namespace Weapon
 {
     public class MultiplyWeaponShoot: WeaponShoot<Multiply>
     {
+        public override WeaponType Type => WeaponType.Multiply;
         public override float Damage => _damage;
         public override float ShootDelay => _shootDelay;
         protected override float BulletSpeed => _bulletSpeed;
