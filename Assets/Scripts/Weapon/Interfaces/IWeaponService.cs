@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Weapon
 {
     public interface IWeaponService
     {
+        public event Action OnChangeWeapon; 
         public List<BaseWeapon> GetWeapons { get; }
         public List<BaseWeapon> AvailableWeapons { get; }
         public BaseWeapon ActiveWeapon { get; }

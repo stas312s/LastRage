@@ -15,6 +15,8 @@ namespace UI
         [SerializeField] private Transform _parent;
 
         private List<WeaponIcon> _weaponIcons = new List<WeaponIcon>();
+        
+        
         private void OnEnable()
         {
             for (int i = 0; i < _weaponService.AmountWeapons; i++)
@@ -23,11 +25,24 @@ namespace UI
                 var icon = Instantiate(_weaponicon, _parent);
                 _weaponIcons.Add(icon);
             }
+            ReDraw();
+            _weaponService.OnChangeWeapon += ReDraw;
+        }
 
+        private void OnDisable()
+        {
+            _weaponService.OnChangeWeapon -= ReDraw;
+        }
+
+        private void ReDraw()
+        {
             var numberWeapon = 0;
             foreach (WeaponType type in Enum.GetValues(typeof(WeaponType)))
             {
                 var weapon = _weaponService.GetWeapon(type);
+             
+                _weaponIcons[numberWeapon].Activate(weapon.IsActive);
+                
                 if (weapon.IsAvailable)
                 {
                     _weaponIcons[numberWeapon].SetSprite(weapon.Icon);
@@ -35,6 +50,7 @@ namespace UI
 
                 numberWeapon++;
             }
+
         }
         
         

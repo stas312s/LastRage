@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,8 +7,7 @@ namespace Weapon
 {
     public class WeaponService: IWeaponService
     {
-
-
+        public event Action OnChangeWeapon;
         public List<BaseWeapon> GetWeapons => _weapons;
         public List<BaseWeapon> AvailableWeapons => _weapons.Where(weapon => weapon.IsAvailable).ToList();
         public BaseWeapon ActiveWeapon => _weapons.FirstOrDefault(weapon => weapon.IsActive);
@@ -53,6 +53,8 @@ namespace Weapon
                     weapon.DisactivateWeapon();
                 }
             }
+
+            OnChangeWeapon?.Invoke();
         }
         
         

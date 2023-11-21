@@ -19,6 +19,7 @@ namespace Weapon
         private float _endTime;
         private float _scaleTime;
         private float _bulletScale;
+        private bool _willDisActivate = false;
 
         protected override void Update()
         {
@@ -31,7 +32,7 @@ namespace Weapon
 
             }
             
-            if (Input.GetMouseButton(FireButton))
+            if (Input.GetMouseButton(FireButton) && _circle && !_willDisActivate)
             {
                 if (_endTime > 0)
                 {
@@ -54,8 +55,27 @@ namespace Weapon
             else if(_circle)
             {
                 Destroy(_circle.gameObject);
+                if (_willDisActivate)
+                {
+                    enabled = false;
+                    _willDisActivate = false;
+                }
+                
             }
 
+        }
+
+        public override void DisactivateWeapon()
+        {
+            _willDisActivate = true;
+            IsActive = false;
+
+        }
+
+        public override void ActivateWeapon()
+        {
+            base.ActivateWeapon();
+            _willDisActivate = false;
         }
 
         protected override void Shoot()

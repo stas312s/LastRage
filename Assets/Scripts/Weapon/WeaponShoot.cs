@@ -7,10 +7,10 @@ namespace Weapon
     public abstract class WeaponShoot<TBullet> : BaseWeapon where TBullet: Bullet
     {
         [Inject] private DiContainer _container;
-        public virtual float Damage => 1;
+        
         public override Sprite Icon => _icon;
-        public bool IsActive { get; set; } = false;
-        public virtual float ShootDelay => 0.1f;
+        
+        
         
         [SerializeField] protected Vector3 Offset = new Vector3(0.5f, 0 ,0);
         
