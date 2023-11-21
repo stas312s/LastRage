@@ -15,7 +15,7 @@ namespace Weapon.Lootbox
         
         [SerializeField] private Lootbox _lootbox;
 
-        private float _distanceX = 20f;
+        private float _distanceX = 13f;
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent<PlayerMove>(out var playerMove))

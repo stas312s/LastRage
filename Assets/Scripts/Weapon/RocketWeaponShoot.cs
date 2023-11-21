@@ -20,7 +20,8 @@ namespace Weapon
             
     
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = (mousePosition - transform.position).normalized;
+            Vector2 direction = (mousePosition - transform.position);
+            direction = direction.normalized;
 
             Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
             rb.velocity = direction * BulletSpeed;

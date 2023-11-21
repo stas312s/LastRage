@@ -23,8 +23,8 @@ namespace Weapon
             
     
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 direction = mousePosition - targetRiffle.transform.position;
-            direction.Normalize(); 
+            Vector2 direction = mousePosition - transform.position;
+            direction = direction.normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
