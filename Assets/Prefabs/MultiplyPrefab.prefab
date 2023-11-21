@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4423934965173558224}
   - component: {fileID: 6016134935178151588}
   - component: {fileID: 6821142539786962913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MultiplyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

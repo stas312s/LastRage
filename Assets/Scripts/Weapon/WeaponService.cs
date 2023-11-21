@@ -10,6 +10,7 @@ namespace Weapon
         public event Action OnChangeWeapon;
         public List<BaseWeapon> GetWeapons => _weapons;
         public List<BaseWeapon> AvailableWeapons => _weapons.Where(weapon => weapon.IsAvailable).ToList();
+        public List<BaseWeapon> NotAvailableWeapons => _weapons.Where(weapon => !weapon.IsAvailable).ToList();
         public BaseWeapon ActiveWeapon => _weapons.FirstOrDefault(weapon => weapon.IsActive);
         public int AmountWeapons => _weapons.Count;
 
@@ -20,11 +21,7 @@ namespace Weapon
             _weapons = weapons;
          
             TakeWeapon(WeaponType.Common);
-            TakeWeapon(WeaponType.Circle);
-            TakeWeapon(WeaponType.Multiply);
-            TakeWeapon(WeaponType.Riffle);
             ActivateWeapon(WeaponType.Common);
-            
         }
         
         
@@ -32,6 +29,7 @@ namespace Weapon
         public void TakeWeapon(WeaponType type)
         {
             GetWeapon(type).TakeWeapon();
+            OnChangeWeapon?.Invoke();
         }
 
         public BaseWeapon GetWeapon(WeaponType type)
