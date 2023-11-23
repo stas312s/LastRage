@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using HealthSystem;
 using Player.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -18,21 +19,17 @@ public class Enemy : DamageTaker<CommonBullet>
     [SerializeField] protected float _speed = 10f;
    
     [SerializeField] private float _stopDistance = 8f;
+    private Coroutine _death = null;
     
-    protected Rigidbody2D _rb;
 
     private bool _isFlip = false;
     private Coroutine _stop;
-    private Collider2D _collider2D;
+    
     private bool _isGround = false;
-    
-    protected virtual void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _collider2D = GetComponent<Collider2D>();
-        
-    }
-    
+
+
+   
+
     private void FixedUpdate()
     {
         MonstrMove();
@@ -41,7 +38,8 @@ public class Enemy : DamageTaker<CommonBullet>
 
     protected virtual void MonstrMove()
     {
-        if (_playerPosition.Transform != null && _stop == null)
+       
+        if (_playerPosition.Transform != null && _stop == null && HealthPoint > 0 )
         {
             Vector2 direction = _playerPosition.Position - (Vector2)transform.position;
             float distance = direction.magnitude;
@@ -49,14 +47,14 @@ public class Enemy : DamageTaker<CommonBullet>
             direction.y = 0;
             if (distance > _stopDistance)
             {
-                Vector2 Move = new Vector2(direction.x * _speed * Time.deltaTime, direction.y); 
-                _rb.velocity = (Move);
+                Vector2 move = new Vector2(direction.x * _speed * Time.deltaTime, direction.y); 
+                _rb.velocity = (move);
             }
             else
             {
                 _stop = StartCoroutine(MoveWait());
             }
-            
+            _animator.SetFloat("Run", Mathf.Abs(_rb.velocity.x));
         }
        
     }
@@ -98,6 +96,25 @@ public class Enemy : DamageTaker<CommonBullet>
         _stop = null;
 
     }
+    
+    protected override void Destroy()
+    {
+        if(_death == null)
+        {
+            _death = StartCoroutine(Death());
+        }
+
+            
+
+    }
+
+    private  IEnumerator Death()
+    {
+        _animator.SetBool("IsDeath", true);
+        yield return  new WaitForSeconds(2f);
+        base.Destroy();
+    }
+
 
     
 }

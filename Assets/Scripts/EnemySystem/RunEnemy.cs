@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using Player.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 namespace EnemySystem
@@ -7,11 +8,12 @@ namespace EnemySystem
     public class RunEnemy: Enemy
     {
         [Inject] private IPlayerPosition _playerPosition;
-        
 
+
+        
         protected override void MonstrMove()
         {
-            if (_playerPosition.Transform != null)
+            if (_playerPosition.Transform != null && HealthPoint > 0)
             {
                 Vector2 direction = _playerPosition.Position - (Vector2)transform.position;
                 direction.Normalize();

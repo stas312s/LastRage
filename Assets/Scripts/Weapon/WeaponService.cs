@@ -21,10 +21,6 @@ namespace Weapon
             _weapons = weapons;
          
             TakeWeapon(WeaponType.Common);
-            TakeWeapon(WeaponType.Circle);
-            TakeWeapon(WeaponType.Riffle);
-            TakeWeapon(WeaponType.Rocket);
-            TakeWeapon(WeaponType.Multiply);
             ActivateWeapon(WeaponType.Common);
         }
         
