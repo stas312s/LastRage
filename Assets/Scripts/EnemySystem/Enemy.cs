@@ -25,7 +25,9 @@ public class Enemy : DamageTaker<CommonBullet>
     private bool _isFlip = false;
     private Coroutine _stop;
     
+    
     private bool _isGround = false;
+
 
 
    
@@ -45,6 +47,7 @@ public class Enemy : DamageTaker<CommonBullet>
             float distance = direction.magnitude;
             direction.Normalize();
             direction.y = 0;
+            Flip(direction.x);
             if (distance > _stopDistance)
             {
                 Vector2 move = new Vector2(direction.x * _speed * Time.deltaTime, direction.y); 
@@ -57,6 +60,17 @@ public class Enemy : DamageTaker<CommonBullet>
             _animator.SetFloat("Run", Mathf.Abs(_rb.velocity.x));
         }
        
+    }
+
+    protected void Flip(float direction)
+    {
+        if((direction < 0 && !_isFlip) || direction > 0 && _isFlip)
+        {
+            _isFlip = !_isFlip;
+            Vector2 flipX = transform.localScale;
+            flipX.x *=-1;
+            transform.localScale = flipX;
+        }
     }
 
     private void GravityFall()
@@ -101,7 +115,10 @@ public class Enemy : DamageTaker<CommonBullet>
     {
         if(_death == null)
         {
+            var currentPosition = transform.position;
+            transform.position = currentPosition;
             _death = StartCoroutine(Death());
+
         }
 
             
@@ -111,8 +128,12 @@ public class Enemy : DamageTaker<CommonBullet>
     private  IEnumerator Death()
     {
         _animator.SetBool("IsDeath", true);
+        _collider2D.enabled = false;
+        _rb.simulated = false;
         yield return  new WaitForSeconds(2f);
         base.Destroy();
+        
+          
     }
 
 

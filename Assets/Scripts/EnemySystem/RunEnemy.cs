@@ -18,8 +18,9 @@ namespace EnemySystem
                 Vector2 direction = _playerPosition.Position - (Vector2)transform.position;
                 direction.Normalize();
                 direction.y = 0;
-                Vector2 Move = new Vector2(direction.x * _speed * Time.deltaTime, direction.y); 
-                _rb.velocity = (Move);
+                Flip(direction.x);
+                Vector2 move = new Vector2(direction.x * _speed * Time.deltaTime, direction.y); 
+                _rb.velocity = (move);
             }
         }
     }

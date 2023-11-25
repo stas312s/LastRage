@@ -18,7 +18,7 @@ namespace Weapon
         public bool NeedDestroy = true;
         [HideInInspector]public float Damage;
 
-        private float _distance = 13f;
+        private float _distance = 10f;
 
         private void Start()
         {

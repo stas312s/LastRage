@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _smoothSpeed = 0.125f;
     
+    
     void LateUpdate()
     {
         Follow();

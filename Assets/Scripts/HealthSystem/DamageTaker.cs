@@ -14,12 +14,17 @@ namespace HealthSystem
         
         [SerializeField] private float _healthPoint = 1;
         
+        protected int _bulletLayer;
+        protected int _enemyLayer;
+        
         protected Animator _animator;
         protected Collider2D _collider2D;
 
         
         protected virtual void Start()
         {
+            _bulletLayer = LayerMask.NameToLayer("Bullet");
+            _enemyLayer = LayerMask.NameToLayer("Enemy");
             _rb = GetComponent<Rigidbody2D>();
             _collider2D = GetComponent<Collider2D>();
             _animator = GetComponent<Animator>();
